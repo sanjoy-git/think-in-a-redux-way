@@ -1,32 +1,12 @@
-import React, { useState } from "react";
+import Button from './Button';
+import Count from './Count';
 
-export default function Counter() {
-  const [counter, setCounter] = useState(0);
-
-  const handleInc = () => {
-    setCounter((pre) => pre + 1);
-  };
-
-  const handleDec = () => {
-    setCounter((pre) => pre - 1);
-  };
-
+export default function Counter({ id, count, inc, dec }) {
   return (
-    <div className="text-center mt-10">
-      <p className="text-2xl">{counter}</p>
-      <br />
-      <button
-        className="py-1 px-2 text-white cursor-pointer m-1 bg-slate-700 rounded-md"
-        onClick={handleInc}
-      >
-        Inc
-      </button>
-      <button
-        className="py-1 px-2 text-white cursor-pointer m-1 bg-slate-700 rounded-md"
-        onClick={handleDec}
-      >
-        Dec
-      </button>
+    <div className="text-center">
+      <Count count={count} />
+      <Button handler={() => inc(id)}>Inc</Button>
+      <Button handler={() => dec(id)}>Dec</Button>
     </div>
   );
 }
